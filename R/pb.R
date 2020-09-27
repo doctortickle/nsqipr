@@ -13,7 +13,7 @@ pb <- function(csv, rds) {
   } else {
     (csv == "indiv" | csv == "both") + (csv == "append" | csv == "both")
   }
-  totalticks <- 16 + csv + rds
+  totalticks <- 17 + csv + rds
   progress::progress_bar$new(
         format = "(:spin)  :preface :what [:bar] :current/:total", total = totalticks, show_after = 0)
 }

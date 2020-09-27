@@ -23,5 +23,6 @@ nsqip <- function(path, csv = "both", rds = TRUE) {
   df <- lapply(dirs, nsqip_dir, csv, rds) # Runs nsqip_dir over each directory
   usethis::ui_done("All files in {usethis::ui_path(path)} cleaned and converted!")
   usethis::ui_todo("If you had any problems, please open an issue at {usethis::ui_value('github.com/dylanrussellmd/nsqipr')}!")
+  return(get("cache", envir = cacheEnv))
 }
 

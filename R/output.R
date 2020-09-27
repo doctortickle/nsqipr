@@ -2,6 +2,7 @@ output <- function(df, file, filename, csv, rds, longtables, progbar) {
   output_rds(df, file, filename, rds, progbar)
   output_csv(df, file, filename, csv, progbar)
   output_longtables(longtables, file, filename, csv, rds, progbar)
+  output_data(df, filename, progbar)
 }
 
 output_rds <- function(df, file, filename, rds, progbar) {
@@ -49,4 +50,10 @@ output_longtables <- function(longtables, file, filename, csv, rds, progbar) {
       }
     }
   })
+}
+
+output_data <- function(df, filename, progbar) {
+  tick(progbar, "writing main data.table for", filename)
+  cache <- get("cache", envir = cacheEnv)
+  assign("cache", rbind(df, cache, fill = TRUE), envir = cacheEnv)
 }
